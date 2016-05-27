@@ -1,3 +1,4 @@
+
 contract hangout {
 
 /* 
@@ -74,10 +75,7 @@ contract hangout {
         }
        /* pass verifiedUsers into a contract that generates POIs, together with verifiedUsers from all other hangouts */
        
-        bytes4 submitVerifiedUsersSig = bytes4(sha3("submitVerifiedUsers(address[])"));
-        registrationContract.call(submitVerifiedUsersSig, verifiedUsers);
-        
-        // registration(registrationContract).submitVerifiedUsers(verifiedUsers);
+        registration(registrationContract).submitVerifiedUsers(verifiedUsers);
 
        /* the POI contract will then pass the full list into the contract generatePOItokens */
         
@@ -86,6 +84,3 @@ contract hangout {
         suicide(registrationContract);
 
    }
-
-
-}      
